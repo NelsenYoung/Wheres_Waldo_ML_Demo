@@ -12,12 +12,17 @@
                 <div class="wrapper">
                     <img src="assests/imgs/waldo_waving.png" id="waldo-img">
                     <img src="assests/imgs/wheres_waldo_sign.png" id="banner-img">
-                    <div class="upload-box">
-                            <canvas id="bb-preview"></canvas>
-                            <h3 class="upload-text">
-                                Click to upload an image
-                            </h3>
-                            <input type="file">
+                    <div class="upload-box-container">
+                            <div class="upload-box">
+                                <h3 class="upload-text">
+                                    Click to upload an image
+                                </h3>
+                                <input type="file">
+                            </div>
+                            <div id="canvas-container">
+                                <canvas id="bb-preview"></canvas>
+                                <div id="bounding-box-container"></div>
+                            </div>
                         </div>
                 </div>
             </section>
