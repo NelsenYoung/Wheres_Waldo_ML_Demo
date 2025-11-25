@@ -130,7 +130,7 @@ function create_circle_element(x, y, radius, original_box, new_box, img_preview,
     );
     bounding_box.addEventListener(
         "mouseout",
-        () => zoom(original_box, new_box, img_preview, row, col, ratio, 256)
+        () => zoom(original_box, new_box, img_preview, row, col, ratio, 128 / ratio)
     );
 
     bounding_box_container.appendChild(bounding_box);
@@ -138,6 +138,7 @@ function create_circle_element(x, y, radius, original_box, new_box, img_preview,
 
 function zoom(original_box, new_box, img_preview, row, col, ratio, size) {
     const original_image_size = size;
+    console.log(`size: ${size}`);
     const image_size = 64 * ratio * 5;
 
     // Crop parameters
@@ -147,17 +148,18 @@ function zoom(original_box, new_box, img_preview, row, col, ratio, size) {
     const sHeight = original_image_size;
 
     // Where to draw on canvas
-    const dx = new_box[0] + new_box[2] - (image_size / 2);
-    const dy = new_box[1] + new_box[3] - (image_size / 2);
+    const dx = new_box[0] + (new_box[2] / 2) - (image_size / 2);
+    const dy = new_box[1] + (new_box[3] / 2) - (image_size / 2);
     const dWidth = image_size;
     const dHeight = image_size;
 
+    console.log(`ratio: ${ratio}`);
     // Circle parameters
     const cx = new_box[0] + (new_box[2] / 2);
     const cy = new_box[1] + (new_box[3] / 2);
     const radius = image_size / 3;
+    console.log(`radius: ${radius}`);
 
-    console.log(radius);
     // ---------- 1. Clip to circle ----------
     canvas_ctx.save();
     canvas_ctx.beginPath();
