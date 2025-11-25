@@ -1,12 +1,9 @@
-from typing import Annotated
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
 from ultralytics import YOLO
 
 import cv2
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 
 import uuid
 import os
