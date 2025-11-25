@@ -34,7 +34,6 @@ opencv-python==4.12.0.88
 packaging==25.0
 pillow==12.0.0
 polars==1.35.2
-polars-runtime-32==1.35.2
 psutil==7.1.3
 pydantic==2.12.4
 pydantic_core==2.41.5
@@ -55,8 +54,8 @@ six==1.17.0
 sniffio==1.3.1
 sympy==1.14.0
 tomli==2.3.0
-torch==2.2.2
-torchvision==0.17.2
+torch==2.5.1
+torchvision==0.20.1
 typer==0.20.0
 typing-inspection==0.4.2
 typing_extensions==4.15.0
