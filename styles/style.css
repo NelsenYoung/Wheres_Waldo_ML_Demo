@@ -90,6 +90,8 @@ body {
 
 .upload-text {
     z-index: 100;
+    font-size: 48px;
+    -webkit-text-stroke: 1px var(--waldo-bg);
 }
 
 .blurred {

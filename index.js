@@ -7,6 +7,8 @@ const canvas_wrapper = document.getElementById("canvas-container");
 const canvas = document.getElementById("bb-preview");
 const canvas_ctx = canvas.getContext("2d");
 
+let timer = 0;
+
 let class_colors = {
     "0": "#FFFF00",
     "1": "#FF0000",
@@ -52,6 +54,7 @@ function call_model_API(imageData, img_preview, ratio){
         console.log(data.result);
         canvas.classList.remove("blurred");
         upload_box_text.style.display = "none";
+        clearInterval(timer);
         draw_bounding_boxes(data, img_preview, ratio);
     })
 }
@@ -158,7 +161,6 @@ function zoom(original_box, new_box, img_preview, row, col, ratio, size) {
     const cx = new_box[0] + (new_box[2] / 2);
     const cy = new_box[1] + (new_box[3] / 2);
     const radius = image_size / 3;
-    console.log(`radius: ${radius}`);
 
     // ---------- 1. Clip to circle ----------
     canvas_ctx.save();
@@ -184,11 +186,11 @@ function map_image_to_canvas(img_preview){
     let ratio = canvas.width / img_preview.width;
 
     canvas.height = canvas.width * aspect;
-    console.log(canvas.height);
     canvas_ctx.drawImage(img_preview, 0, 0, canvas.width, canvas.height);
 
     upload_box_text.textContent = "Finding Waldo";
     upload_box_text.style.display = "block";
+    timer = setInterval(() => dotdotdot(upload_box_text.textContent), 500);
 
     return ratio;
 }
@@ -234,5 +236,13 @@ function resizeCanvas() {
 
     canvas.width  = container.clientWidth;   // internal pixels
     canvas.height = container.clientHeight;  // internal pixels
+}
+
+function dotdotdot(input){
+    if(input.length == 16){
+        upload_box_text.textContent = "Finding Waldo.";
+    }else{
+        upload_box_text.textContent += ".";
+    }
 }
 
