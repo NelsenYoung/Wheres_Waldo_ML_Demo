@@ -13,6 +13,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5500",
+    "https://nelsenyoung.github.io",
 ]
 
 app.add_middleware(
