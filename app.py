@@ -14,6 +14,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5500",
     "https://nelsenyoung.github.io",
+    "https://straightforwardly-sparkless-darrel.ngrok-free.dev"
 ]
 
 app.add_middleware(
